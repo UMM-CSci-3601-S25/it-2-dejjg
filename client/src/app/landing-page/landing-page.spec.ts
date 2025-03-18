@@ -6,9 +6,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { HomeComponent } from './landing-page';
+import { By } from '@angular/platform-browser';
 
-describe('AppComponent', () => {
+describe('HomeComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -19,20 +20,21 @@ describe('AppComponent', () => {
         MatSidenavModule,
         MatCardModule,
         MatListModule,
-        AppComponent
+        HomeComponent
       ],
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should create landing page', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-
-  it("should have as title 'Generic Apples Game'", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Generic Apples Game');
-  });
+});
+it('should have a button to join a game', () => {
+  const fixture = TestBed.createComponent(HomeComponent);
+  fixture.detectChanges();
+  const joinButton = fixture.debugElement.query(By.css('routerLink="/game/{{joinId}}'));
+  expect(joinButton).toBeTruthy();
+  expect(joinButton.nativeElement.textContent).toContain('Join Game');
 });
