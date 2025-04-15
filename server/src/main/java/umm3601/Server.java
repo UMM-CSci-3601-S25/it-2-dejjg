@@ -93,7 +93,7 @@ public class Server {
     // Setup the MongoDB client object with the information we set earlier
     MongoClient mongoClient = MongoClients.create(MongoClientSettings
       .builder()
-      .applyToClusterSettings(builder -> builder.hosts(Arrays.javalin.start(SERVER_PORT);asList(new ServerAddress(mongoAddr))))
+      .applyToClusterSettings(builder -> builder.hosts(Arrays.asList(new ServerAddress(mongoAddr))))
       // Old versions of the mongodb-driver-sync package encoded UUID values (universally unique identifiers) in
       // a non-standard way. This option says to use the standard encoding.
       // See: https://studio3t.com/knowledge-base/articles/mongodb-best-practices-uuid-data/
